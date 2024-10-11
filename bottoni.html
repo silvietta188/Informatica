@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #out1{
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            background-color:rgb(237, 237, 237);
+        }
+
+        #out2{
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            background-color:rgb(237, 237, 237);
+        }
+
+        #out3{
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            background-color:rgb(237, 237, 237);
+        }
+
+        #out4{
+            height: 200px;
+            width: 200px;
+            border: 1px solid black;
+            background-color:rgb(237, 237, 237);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        La mia prima pagina javascript
+    </h1>
+
+
+    <div id="out1"></div>
+    <button onclick="stampa1()" > Avvia funzione </button>
+    <div id="out2"></div>
+    <button onclick="stampa2()" > Avvia funzione </button>
+    <div id="out3"></div>
+    <button onclick="stampa3()" > Avvia funzione </button>
+    <div id="out4"></div>
+    <button onclick="stampa4()" > Avvia funzione </button>
+
+
+
+
+   <script>
+        function stampa1()
+        {
+           
+            alert("test bottone + funzione");
+            document.getElementById("out1").innerHTML = "Ieri sono andata in centro";
+        }
+        function stampa2()
+        {
+           
+           alert("test bottone + funzione");
+           document.getElementById("out2").innerHTML = "Ieri ho giocato a pallavolo";
+       }
+       function stampa3()
+       {
+           
+           alert("test bottone + funzione");
+           document.getElementById("out3").innerHTML = "Oggi mangerò la pizza";
+       }
+
+       function stampa4()
+       {
+           
+           alert("test bottone + funzione");
+           document.getElementById("out4").innerHTML = "Domani è sabato";
+       }
+      
+
+    </script>
+
+</body>
+</html>
