@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div e css</title>
+   <style>
+        #SilviaHeader{
+            background-color: #91dd84;
+                width: 500px;
+                height: 100px;
+                border: 3px solid rgb(25, 82, 27);
+                margin: 20px;
+                padding: 10px;
+
+        }
+
+        #SilviaContenuto{
+            background-color: #cb6ed1;
+                width: 500px;
+                height: 150px;
+                border: 3px solid rgb(75, 25, 82);
+                margin: 20px;
+                padding: 10px;
+
+        }
+        #SilviaFooter{
+            background-color: #76a0d9;
+                width: 500px;
+                height: 100px;
+                border: 3px solid rgb(24, 37, 141);
+                margin: 20px;
+                padding: 10px;
+        }
+
+        #SilviaPalla{
+            background-color: #e17e7e;
+                width: 500px;
+                height: 100px;
+                border: 3px solid rgb(112, 16, 16);
+                margin: 20px;
+                padding: 10px;
+        }
+
+        #SilviaLibro{
+            background-color: #d9d776;
+                width: 500px;
+                height: 150px;
+                border: 3px solid rgb(135, 147, 45);
+                margin: 20px;
+                padding: 10px;
+        }
+ 
+
+   </style>
+
+
+
+</head>
+<body>
+    <div id="SilviaHeader">
+<p>“Lo scienziato nel suo laboratorio non è solo un tecnico, è anche un bambino davanti a fenomeni della Natura che lo affascinano come un racconto di fate.”</p>
+<p>Marie Curie</p>
+
+<p id="t1">Questo è un testo da nascondere.</p> 
+    <button onclick="nascondiTesto('SilviaHeader')">Nascondi Testo</button> 
+    </div>
+
+   
+
+    <div id="SilviaContenuto">
+<p>“Se verrà dimostrato che la mia teoria della relatività è valida, la Germania dirà che sono tedesco e la Francia che sono cittadino del mondo. Se la mia teoria dovesse essere sbagliata, la Francia dirà che sono un tedesco e la Germania che sono un ebreo.”</p>
+<p>Albert Einstein</p>
+
+<p id="t2">Questo è un testo da nascondere.</p> 
+<button onclick="nascondiTesto('SilviaContenuto')">Nascondi Testo</button> 
+    </div>
+
+   
+
+    <div id="SilviaFooter">
+
+<p>“Le leggi della scienza dovrebbero essere le stesse per tutti gli osservatori che si muovono liberamente, a prescindere dalla loro velocità.”</p>
+<p>Stephen Hawking</p>
+
+<p id="t3">Questo è un testo da nascondere.</p> 
+    <button onclick="nascondiTesto('SilviaFooter')">Nascondi Testo</button> 
+    </div>
+
+    
+
+    <div id="SilviaPalla">
+        <p>“Dio non si immischia nelle vicende di dettaglio della storia naturale, cioè nelle cause secondarie che studiano gli scienziati.”</p>
+        <p>Charles Robert Darwin</p>
+
+        <p id="t4">Questo è un testo da nascondere.</p> 
+        <button onclick="nascondiTesto('SilviaPalla')">Nascondi Testo</button> 
+    
+    </div>
+
+
+    <div id="SilviaLibro">
+        <p>“Io sono tra quelli che pensano che la scienza abbia una grande bellezza. Uno scienziato nel suo laboratorio non è solo un tecnico: è anche un bambino posto di fronte a fenomeni naturali che lo impressionano come un racconto di fiabe.”</p>
+        <p>Marie Curie</p>
+
+        <p id="t5">Questo è un testo da nascondere.</p> 
+        <button onclick="nascondiTesto('SilviaLibro')">Nascondi Testo</button>
+    </div>
+
+  <script>
+    function nascondiTesto(t) 
+    {
+    const testo = document.getElementById(t);
+    testo.style.display = "none"; 
+    // Nasconde il testo impostando display a 'none'
+    } 
+      </script>
+
+
+</body>
+</html>
