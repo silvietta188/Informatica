@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatore con Differenza</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .container {
+      width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #f4f4f4;
+    }
+    #counter {
+      font-size: 70px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #28a745;
+      color: white;
+    
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .log {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="counter">100.00</div>
+    <button id="button" disabled>Premi quando arriva a 90, 80, 70, ...</button>
+      <h1>Ecco qui la lista dei tempi </h1>
+      <ul id="logList"></ul>
+      <p><strong>Somma delle differenze:</strong> <span id="totalDifference">0.00</span></p>
+  </div>
+
+  <script>
+    let counter = 100.00; // Tempo iniziale
+    setInterval;
+    let differenceSum = 0; // Somma delle differenze
+    let log = []; // Log dei tempi salvati
+    let target = 90; // Obiettivo per il bottone
+
+    // Funzione per aggiornare il contatore
+    function updateCounter() {
+      counter -= 0.01; // Decrementa di 0.01 (centesimi di secondo)
+      if (counter <= 0) {
+        clearInterval; // Ferma il contatore quando arriva a 0
+        counter = 0;
+      }
+      document.getElementById("counter").innerText = counter.toFixed(2);
+
+      // Quando il contatore raggiunge un target (90, 80, 70, ...)
+      if (Math.floor(counter) === target) {
+        document.getElementById("button").disabled = false; // Abilita il bottone
+      }
+
+      // Imposta il prossimo target (ogni 10 unità)
+      if (Math.floor(counter) % 10 === 0) {
+        target = Math.floor(counter);
+      }
+    }
+
+    // Funzione per salvare il tempo e calcolare la differenza
+    function saveTime() {
+      let optimalTime = target; 
+      let currentTime = counter.toFixed(2);
+      let difference = (optimalTime - currentTime).toFixed(2);
+      differenceSum += parseFloat(difference); // Somma delle differenze
+      log.push(`Tempo salvato a ${currentTime}s, differenza: ${difference}s`);
+
+      // Aggiungi il log all'elenco
+      const logList = document.getElementById("logList");
+      const logItem = document.createElement("li");
+      logItem.textContent = log[log.length - 1];
+      logList.appendChild(logItem);
+
+      // Aggiorna la somma delle differenze
+      document.getElementById("totalDifference").textContent = differenceSum.toFixed(2);
+
+      // Disabilita il bottone finché non arriva al prossimo target
+      document.getElementById("button").disabled = true;
+    }
+
+    // Avvia il contatore
+    function startCounter() {
+      interval = setInterval(updateCounter, 10); // Aggiorna ogni 10ms (centesimi di secondo)
+    }
+
+    // Inizializza il contatore
+    startCounter();
+
+    // Aggiungi l'evento al bottone
+    document.getElementById("button").addEventListener("click", saveTime);
+
+  </script>
+</body>
+</html>
