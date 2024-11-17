@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The Window Object</h1>
+<h2>The prompt() Method</h2>
+
+<p>Clicca il bottone per creare una conversazione</p>
+
+
+<p id="demo"></p>
+
+<div>
+<button onclick="myFunction1()">Try it</button>
+<button onclick="myFunction2()">Try it</button>
+</div>
+
+<script>
+function myFunction1() {
+  let person = prompt("Please enter your name", "Silvia Grosso");
+  if (person != null) {
+    document.getElementById("demo").innerHTML =
+    "Ciao " + person + "! Quando sei nata?";
+  }
+}
+function myFunction2() {
+  let birthday = prompt("Inserisci la data di nascita", "2008-02-28");
+  if (birthday != null) {
+    document.getElementById("demo").innerHTML = 
+    "Calcoliamo quanto tempo è passato da quando sei nata...";
+    const dateDifferenceInDays = (dateInitial, dateFinal) =>
+  (dateFinal - dateInitial) / 86_400_000;
+
+   // Separare la data in giorno, mese e anno
+   let birthDateParts = birthday.split('-'); // Splitta la data in [giorno, mese, anno]
+        let birthDateObj = new Date(birthDateParts[2], birthDateParts[1] - 1, birthDateParts[0]);  // Attenzione al mese (partendo da 0)
+
+        // Data odierna
+        let currentDate = new Date('2024-11-17');
+
+        // Calcolare la differenza in giorni
+        let daysDifference = dateDifferenceInDays(birthDateObj, currentDate);
+
+document.getElementById("demo").innerHTML = 
+          "Sono passati " + Math.floor(daysDifference) + " giorni dalla tua nascita.";
+  }
+}
+
+
+</script>
+</body>
+</html>
