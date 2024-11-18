@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Js 5</title>
     <style>
-        #p{
-            font-size: 20px;
+        #sus{
+            font-size: 55px;
+            color: 	#008080;
         }
         #div{
             text-align: center;
             font-size: 300px;
+            color: 	#ff00ff
         }
     </style>
 </head>
 <body>
 
-    <p id="p"></p>
+    <p id="sus"></p>
     <div id="div"></div>
 
     <script>
@@ -24,9 +26,9 @@
         let tim = setInterval(timer,1000);
         function timer(){
             contatore--;
-            document.getElementById("p").innerHTML = "attendere... " + contatore;
+            document.getElementById("sus").innerHTML = "Sii paziente per... " + contatore;
             if(contatore==0){
-                p.style.display = "none";
+                sus.style.display = "none";
                 clearInterval(tim);
                 let tempo = 0;
                 let crono = setInterval(cronometro,1000);
