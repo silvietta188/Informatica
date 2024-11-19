@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="countdown">100.00</div>
-    <button id="captureButton" disabled>Capture Time</button>
+    <button id="captureButton">Capture Time</button>
     <div id="result"></div>
 
     <script>
@@ -43,7 +43,7 @@
             countdownElement.textContent = formatCountdown(countdown);
    
             if (nextTargetIndex < targetTimes.length && countdown <= targetTimes[nextTargetIndex]) {
-                captureButton.disabled = false;
+                
             }
 
             if (countdown <= 0) {
@@ -63,7 +63,6 @@
                 resultElement.innerHTML += "<p>Obiettivo: " + targetTime + ", Catturato: " + currentTime + ", Differenza: " + difference + "</p>";
 
                 nextTargetIndex++;
-                captureButton.disabled = true;
             }
         });
 
