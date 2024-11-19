@@ -1,52 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Giorni di Vita</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Georgia;
+            font-size: 35px;
+            padding: 40px;
+        }
+        input {
+            margin: 25px;
+            color:#6248d66c;
+        }
+    </style>
+</head>
 <body>
+    <h1>Calcola quanto tempo sei in vita</h1>
+    <form id="lifeForm">
+        Nome:<br>
+        <input type="text" id="name" name="name" required><br>
+        Data di Nascita:<br>
+        <input type="date" id="birthdate" name="birthdate" required><br><br>
+        <input type="submit" value="Calcola">
+    </form>
+    <div id="result"></div>
 
-<h1>The Window Object</h1>
-<h2>The prompt() Method</h2>
+    <script>
+        document.getElementById('lifeForm').addEventListener('submit', function(event) {
+            event.preventDefault(); //invia i dati
+   
+            let name = prompt("Per favore, inserisci il tuo nome:", "Silvia Grosso");
 
-<p>Clicca il bottone per creare una conversazione</p>
+            if (name == null || name != "Silvia Grosso" ) {
+                document.getElementById('result').innerHTML = "Nome non inserito!";
+                return;
+            }
 
+            let birthdate = new Date(document.getElementById('birthdate').value);
+            let now = new Date();
+            let diff = now - birthdate;
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor(diff / (1000 * 60 * 60));
+            let seconds = Math.floor(diff / 1000);
 
-<p id="demo"></p>
-
-<div>
-<button onclick="myFunction1()">Try it</button>
-<button onclick="myFunction2()">Try it</button>
-</div>
-
-<script>
-function myFunction1() {
-  let person = prompt("Please enter your name", "Silvia Grosso");
-  if (person != null) {
-    document.getElementById("demo").innerHTML =
-    "Ciao " + person + "! Quando sei nata?";
-  }
-}
-function myFunction2() {
-  let birthday = prompt("Inserisci la data di nascita", "2008-02-28");
-  if (birthday != null) {
-    document.getElementById("demo").innerHTML = 
-    "Calcoliamo quanto tempo è passato da quando sei nata...";
-    const dateDifferenceInDays = (dateInitial, dateFinal) =>
-  (dateFinal - dateInitial) / 86_400_000;
-
-   // Separare la data in giorno, mese e anno
-   let birthDateParts = birthday.split('-'); // Splitta la data in [giorno, mese, anno]
-        let birthDateObj = new Date(birthDateParts[2], birthDateParts[1] - 1, birthDateParts[0]);  // Attenzione al mese (partendo da 0)
-
-        // Data odierna
-        let currentDate = new Date('2024-11-17');
-
-        // Calcolare la differenza in giorni
-        let daysDifference = dateDifferenceInDays(birthDateObj, currentDate);
-
-document.getElementById("demo").innerHTML = 
-          "Sono passati " + Math.floor(daysDifference) + " giorni dalla tua nascita.";
-  }
-}
-
-
-</script>
+            document.getElementById('result').innerHTML = "Ciao " + name + "! Sei in vita da:<br>" +
+                days + "giorni<br>" +
+                hours + "ore<br>" +
+                seconds + "secondi";
+    });
+    </script>
 </body>
 </html>
+
