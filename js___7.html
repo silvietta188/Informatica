@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Giorni di Vita</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Georgia;
+            font-size: 35px;
+            padding: 40px;
+        }
+        input {
+            margin: 25px;
+            color:#6248d66c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcola quanto tempo sei in vita</h1>
+    <form id="lifeForm">
+        Nome:<br>
+        <input type="text" id="name" name="name" required><br>
+        Data di Nascita:<br>
+        <input type="date" id="birthdate" name="birthdate" required><br><br>
+        <input type="submit" value="Calcola">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('lifeForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            let name = document.getElementById('name').value;
+            let birthdate = new Date(document.getElementById('birthdate').value);
+            let now = new Date();
+            let diff = now - birthdate;
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor(diff / (1000 * 60 * 60));
+            let seconds = Math.floor(diff / 1000);
+
+            document.getElementById('result').innerHTML = "Ciao " + name + "! Sei in vita da:<br>" +
+                days + " giorni<br>" +
+                hours + " ore<br>" +
+                seconds + " secondi";
+            
+
+            let expectedAge = prompt("A che età pensi di morire?");
+            if (expectedAge != null) {
+                let remainingYears = expectedAge - now.getFullYear() + birthdate.getFullYear();
+                let remainingDays = Math.floor(remainingYears / (1000 * 60 * 60 * 24));
+                document.getElementById('result').innerHTML += "<br>Ti restano circa " + remainingDays + " giorni di vita.";
+            }
+        });
+    </script>
+</body>
+</html>
