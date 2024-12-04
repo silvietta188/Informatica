@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element</title>
+</head>
+<body>
+   
+<p>Definizione di array: Una struttura dati composta da elementi omogenei tra loro (numerici, oggetti o altre strutture dati)</p>
+<p>Esempio stampa di array</p>
+<p id="out1"></p>
+
+<script>
+    const arrymorra = ["sasso", "carta", "forbice"];
+
+    function getElement(index) {
+        if (index < 0 || index >= arrymorra.length) {
+            return "Indice non valido";
+        }
+        return arrymorra[index];
+    }
+
+    function getWinner(player1, player2) {
+        if (player1 === player2) {
+            return "Pareggio";
+        } else if ((player1 === "sasso" && player2 === "forbice") || 
+                   (player1 === "forbice" && player2 === "carta") || 
+                   (player1 === "carta" && player2 === "sasso")) {
+            return "Il primo giocatore vince!";
+        } else {
+            return "Il secondo giocatore vince!";
+        }
+    }
+
+    function getRandomIndex() {
+        return Math.floor(Math.random() * arrymorra.length);
+    }
+
+    const firstPlayer = getElement(getRandomIndex());
+    const secondPlayer = getElement(getRandomIndex());
+
+    document.getElementById("out1").innerHTML += "Primo giocatore: " + firstPlayer + "<br>";
+    document.getElementById("out1").innerHTML += "Secondo giocatore: " + secondPlayer + "<br>";
+    document.getElementById("out1").innerHTML += getWinner(firstPlayer, secondPlayer);
+
+    console.log(arrymorra);
+</script>
+
+</body>
+</html>
