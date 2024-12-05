@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Lista della Spesa</title>
+    <style>
+        body {
+            font-family: Arial, Georgia;
+            margin: 40px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px;
+            margin: 5px 0;
+            background-color: #317d9b6a;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: rgb(255, 255, 255);
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .remove-btn {
+            background-color: #f44336;
+        }
+        .remove-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Playlist</h1>
+    <ul id="playlistUl"></ul>
+
+    <div>
+        <button onclick="aggiungiCanzone()">Aggiungi Canzone</button>
+        <button onclick="rimuoviCanzone()">Rimuovi Ultima Canzone</button>
+    </div>
+
+    <script>
+        let playlist = [];
+
+        function aggiungiCanzone() {
+            let canzone = prompt("Inserisci una canzone per la tua playlist:");
+           
+            if (canzone) {
+                playlist.push(canzone);
+                aggiornaPlaylist();
+            } else {
+                alert("Non hai inserito nulla.");
+            }
+        }
+
+        function rimuoviCanzone() {
+            if (playlist.length > 0) {
+                let canzoneRimossa = playlist.pop();
+                alert("Hai rimosso: " + canzoneRimossa);
+                aggiornaPlaylist();
+            } else {
+                alert("La playlist è già vuota!");
+            }
+        }
+
+        function aggiornaPlaylist() {
+            let playlistUl = document.getElementById("playlistUl");
+            playlistUl.innerHTML = "";
+
+            playlist.forEach(function(canzone) {
+                let li = document.createElement("li");
+                li.textContent = canzone;
+                playlistUl.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
