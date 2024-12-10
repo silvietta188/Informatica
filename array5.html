@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Numerica con Array</title>
+</head>
+<body>
+
+    <h1>Analisi Numerica con Array</h1>
+    <p>Lista generata:</p>
+    <p id="out1"></p>
+    <script>
+        // Funzione per controllare se un numero è primo
+        function isPrime(n) {  
+            if (n <= 1) return false;
+            if (n <= 3) return true;
+
+            if (n % 2 === 0 || n % 3 === 0) return false;
+
+            for (let i = 5; i * i <= n; i += 6) {
+                if (n % i === 0 || n % (i + 2) === 0) return false;
+            }
+
+            return true;
+        }
+
+        // Funzione per trovare i fattori di un numero
+        function getFactors(n) {
+            let factors = [];
+            for (let i = 1; i <= n; i++) {
+                if (n % i === 0) {
+                    factors.push(i);
+                }
+            }
+            return factors;
+        }
+
+        // Genera numeri da 0 a 1000 e verifica se sono primi
+        let numeri = [];
+        for (let i = 0; i <= 1000; i++) {
+            if (isPrime(i)) {
+                numeri.push(i + " (primo)");
+            } else {
+                let factors = getFactors(i).join(", ");
+                numeri.push(i + " (non primo, fattori: " + factors + ")");
+            }
+        }
+
+        // Mostra la lista nel documento
+        document.getElementById("out1").innerHTML = numeri.join("<br>");
+    </script>
+</body>
+</html>
