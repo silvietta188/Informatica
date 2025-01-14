@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,161 +6,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <style>
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: Arial, sans-serif;
-        }
 
-        div {
-          background-color: beige;
-          max-width: 1200px; 
-          margin: auto;
-          padding: 20px;
+<style>
+        div.a {https://github.com/silvietta188/Informatica/blob/main/numeriaurei2.html
+        color: rgb(85, 230, 69);
         }
 
         div.a {
-          text-decoration: underline;
-          font-weight: bold;
-          margin-bottom: 10px;
+        text-decoration: underline;
+        color: rgb(40, 84, 13);
         }
-
         div.b {
-          line-height: 1.6;
-          text-align: justify; 
+        line-height: 1.3;
+        }
+        h1{
+        color: aquamarine;
+        }
+        h2{
+        color: rgb(31, 31, 216);
         }
 
-        img {
-          max-width: 100%; /* Le immagini non superano mai la larghezza del contenitore */
-          height: auto; /* Mantiene il rapporto di aspetto */
-          display: block;
-          margin: 0 auto; /* Centra le immagini orizzontalmente */
-        }
-
-        ul {
-          padding-left: 20px;
-        }
-
-        hr {
-          border: 1px solid #ccc;
-          margin: 30px 0;
-        }
-
-        /* Nuove regole per allineare le immagini n4 e n5 affiancate */
-        .image-container {
-          display: flex;
-          justify-content: space-between;
-          gap: 10px;
-        }
-
-        .image-container img {
-          width: 48%; /* Le immagini occuperanno ciascuna il 48% dello spazio disponibile */
-        }
-
-    </style>
+       
+</style>
 </head>
 <body>
 
-<div>
-    <h1>Analisi Numerica del Numero Aureo</h1>
-    <h2>Abstract</h2>
-    <div class="a">Italiano</div>
-    <div class="b">
-        <p>Il numero aureo, denotato con φ, è un numero irrazionale con approssimazione 1,618033988749895, che ha affascinato matematici, artisti e scienziati per secoli grazie alle sue proprietà uniche e alla sua presenza in numerosi fenomeni naturali, strutture geometriche e opere artistiche. Questo articolo esplora le principali caratteristiche matematiche di φ, inclusa la sua definizione tramite l'equazione quadratica x<sup>2</sup>=x+1 e la sua connessione con la successione di Fibonacci. Inoltre, vengono analizzati i metodi numerici per il calcolo di φ, come la successione di Fibonacci, la formula esplicita e le serie di potenze, evidenziando la velocità di convergenza e la precisione di questi approcci. Infine, vengono esplorate le applicazioni del numero aureo in diversi ambiti, dalla geometria all'arte, dalla biologia alla progettazione architettonica. Il numero aureo si rivela quindi una costante matematica di grande rilevanza teorica e applicativa, che continua a stimolare studi e ricerche in vari campi.</p>
-    </div>
-
-    <div class="a">English</div>
-    <div class="b">
-        <p>The golden ratio, denoted by φ, is an irrational number approximately equal to 1.618033988749895, which has fascinated mathematicians, artists, and scientists for centuries due to its unique properties and its presence in numerous natural phenomena, geometric structures, and artistic works. This article explores the main mathematical characteristics of φ, including its definition through the quadratic equation x<sup>2</sup>=x+1 and its connection with the Fibonacci sequence. Additionally, numerical methods for calculating φ, such as the Fibonacci sequence, the explicit formula, and power series, are analyzed, highlighting the convergence speed and precision of these approaches. Finally, the applications of the golden ratio in various fields, from geometry to art, biology to architectural design, are explored. The golden ratio thus proves to be a mathematical constant of great theoretical and practical relevance, continuing to stimulate studies and research in various fields.</p>
-    </div>
-
-    <hr>
-
-    <h2>Introduzione</h2>
-    <div class="b">
-        <p>Il numero aureo, rappresentato dalla lettera greca φ (phi), è un numero irrazionale che ha trovato applicazioni in numerosi ambiti della matematica, dell'arte, dell'architettura e della natura. Il valore di φ è circa 1,618033988749895, ma la sua rappresentazione decimale continua all'infinito senza ripetersi. In questo articolo, esploreremo le principali proprietà del numero aureo e analizzeremo i metodi numerici per calcolarlo con un'alta precisione.</p>
-    </div>
-
-    <ul>
-        <li>
-            <div class="a">Perché lo studio del numero aureo è importante?</div>
-            <div class="b">Lo studio del numero aureo è importante per proprietà matematiche uniche, che lo rendono un oggetto matematico di grande interesse; Applicazioni pratiche in geometria e arte, che ha suscitato ammirazione per la sua estetica considerata particolarmente armoniosa; Modellizzazione della natura, in cui è preso come esempio di come un concetto matematico possa essere utilizzato per spiegare e modellare la realtà; Simmetria e proporzione, che è essenziale in campi come la progettazione di strutture ed edifici, la musica e la pittura.</div>
-        </li>
-
-        <li>
-            <div class="a">Perché ne è stato fatto uno studio?</div>
-            <div class="b">Lo studio del numero aureo è stato avviato principalmente per curiosità e ricerca di armonia che esso sembrava rappresentare; evidenze storiche hanno osservato che il numero aureo appariva frequentemente in natura, arte e architettura quindi il suo studio è un modo per rispondere alla domanda su come e perché la natura e l'arte sembrano seguire certe leggi matematiche; Avanzamenti scientifici, lo studio del numero aureo è stato esteso a molti altri campi scientifici inclusi la biologia e la fisica.</div>
-        </li>
-
-        <li>
-            <div class="a">In cosa si distingue dagli altri studi?</div>
-            <div class="b">Lo studio del numero aureo si distingue per alcune caratteristiche uniche: Connessione tra matematica e bellezza estetica, molti concetti matematici non godono della stessa notorietà estetica che φ ha acquisito nel corso della storia; Omnipresenza nella natura e nella geometria, La sua presenza nei modelli di crescita delle piante, nelle spirali naturali, nelle distribuzioni delle foglie e persino nelle galassie è un aspetto che rende lo studio del numero aureo unico.</div>
-        </li>
-    </ul>
-
-    <hr>
-
-    <h2>Definizione e Proprietà Fondamentali</h2>
-    <div class="a">ELEMENTI DI EUCLIDE</div>
-    <div class="b">
-        <p>Nel VI libro compare la seguente definizione: Una retta è divisa in media ed estrema ragione quando la lunghezza della linea totale sta a quella della parte maggiore come quella della parte maggiore sta a quella della minore.</p>
-    </div>
-    <img src="n1.png" alt="Elementi di Euclide">
-
-    <p>Ma come tutto questo ha a che fare con il numero aureo?</p>
-    <img src="n2.png" alt="Equazione del numero aureo">
-
-    <p>Risolvendo questa equazione, otteniamo due radici, ma solo quella positiva è significativa in contesti matematici ed estetici. In termini numerici, la soluzione è:</p>
-    <img src="n3.png" alt="Soluzione equazione numero aureo">
-
-    <hr>
-
-    <h2>Proprietà Algebriche e Geometriche</h2>
-    <p>Nel 1202 ci fu un italiano, Leonardo Pisano, noto come Fibonacci, che si imbattè nel numero aureo:</p>
-
-    <div class="image-container">
-        <img src="n4.png" alt="Successione Fibonacci">
-        <img src="n5.png" alt="Successione Fibonacci - conigli">
-    </div>
-
-    <img src="n6.png" alt="Fibonacci - Successione">
-
-    <div class="b">
-        <p>Una delle più interessanti figure geometriche che si possono costruire utilizzando proporzioni basate su quella aurea è il rettangolo aureo. Possiamo pensarlo come un accostamento di quadrati i cui lati siano proprio i numeri della successione di Fibonacci:</p>
-    </div>
-    <img src="n7.png" alt="Rettangolo aureo">
-
-    <div class="b">
-        <p>Le carte di credito, la maggior parte dei biglietti di visita, le tessere degli abbonamenti o le carte di identità hanno proporzioni auree; ogni giorno portiamo con noi tutta la bellezza del numero divino.</p>
-    </div>
-
-    <hr>
-
-    <h2>Applicazioni del Numero Aureo</h2>
-    <div class="a">Biologia</div>
-    <img src="n8.png" alt="Biologia e numero aureo">
-    <p>Archi di circonferenza che hanno come raggio il lato del quadrato e come centro un vertice di ciascuno di essi, abbiamo ottenuto la spirale logaritmica:</p>
-    <img src="n9.png" alt="Spirale logaritmica">
-
-    <p>Questa curva sinuosa legata anch'essa al numero phi la troviamo in conchiglie o nei bracci delle galassie:</p>
-    <img src="n10.png" alt="Conchiglie e spirale aurea">
-
-    <div class="a">Arte e architettura</div>
-    <p>Fidia il direttore dei lavori del Partenone di Atene da cui deriva proprio il nome del numero aureo</p>
-    <img src="n12.png" alt="Partenone">
-
-    <div class="b">
-        <p>Nell'uomo vitruviano di Leonardo da Vinci venne risolto un problema che aveva fatto fallire molti altri artisti ovvero quello di mettere in relazione la figura umana con il quadrato e il cerchio. Leonardo da' al quadrato e alla circonferenza centri differenti, rispettivamente genitali e ombelico. Da questo disegno derivano le proporzioni ideali del corpo umano.</p>
-    </div>
-    <img src="n13.png" alt="Uomo Vitruviano">
-
-    <hr>
-
-    <h2>Conclusioni</h2>
-    <p>Il numero aureo è una costante matematica di grande rilevanza, sia teorica che applicativa. Le sue proprietà affascinano matematici, artisti e scienziati da secoli. L'analisi numerica del numero aureo, in particolare attraverso metodi come la successione di Fibonacci e le formule esplicite, offre un modo per ottenere stime sempre più precise di questo numero in ambito computazionale. Le applicazioni pratiche del numero aureo in geometria, arte e biologia continuano a stimolare nuove ricerche e scoperte, rendendo il numero aureo una delle costanti matematiche più affascinanti e universalmente riconosciute. In sintesi, lo studio del numero aureo non solo ha un valore intrinseco dal punto di vista matematico, ma è anche un concetto che si estende oltre i confini tradizionali della matematica, toccando ambiti estetici, naturali e scientifici. La sua rilevanza universale e la bellezza delle sue proprietà continuano a renderlo un oggetto di studio affascinante.</p>
-
+<h1>Analisi Numerica del Numero Aureo</h1>
+<h2>Abstract</h2>
+<div class="a">Italiano</div>
+<div class="b"> <p>Il numero aureo, denotato con φ, è un numero irrazionale con approssimazione 1,618033988749895, che ha affascinato matematici, artisti e scienziati per secoli grazie alle sue proprietà uniche e alla sua presenza in numerosi fenomeni naturali, strutture geometriche e opere artistiche. Questo articolo esplora le principali caratteristiche matematiche di φ, inclusa la sua definizione tramite l'equazione quadratica x<sup>2</sup>=x+1 e la sua connessione con la successione di Fibonacci. Inoltre, vengono analizzati i metodi numerici per il calcolo di φ, come la successione di Fibonacci, la formula esplicita e le serie di potenze, evidenziando la velocità di convergenza e la precisione di questi approcci. Infine, vengono esplorate le applicazioni del numero aureo in diversi ambiti, dalla geometria all'arte, dalla biologia alla progettazione architettonica. Il numero aureo si rivela quindi una costante matematica di grande rilevanza teorica e applicativa, che continua a stimolare studi e ricerche in vari campi.</p>
 </div>
+
+<div class="a">English</div>
+<div class="b"><p> The golden ratio, denoted by φ, is an irrational number approximately equal to 1.618033988749895, which has fascinated mathematicians, artists, and scientists for centuries due to its unique properties and its presence in numerous natural phenomena, geometric structures, and artistic works. This article explores the main mathematical characteristics of φ, including its definition through the quadratic equation x<sup>2</sup>=x+1 and its connection with the Fibonacci sequence. Additionally, numerical methods for calculating φ, such as the Fibonacci sequence, the explicit formula, and power series, are analyzed, highlighting the convergence speed and precision of these approaches. Finally, the applications of the golden ratio in various fields, from geometry to art, biology to architectural design, are explored. The golden ratio thus proves to be a mathematical constant of great theoretical and practical relevance, continuing to stimulate studies and research in various fields.  <p></div>
+
+<hr>
+
+<h2>Introduzione</h2>
+<div class="b"><p>Il numero aureo, rappresentato dalla lettera greca φ (phi), è un numero irrazionale che ha trovato applicazioni in numerosi ambiti della matematica, dell'arte, dell'architettura e della natura. Il valore di φ è circa 1,618033988749895, ma la sua rappresentazione decimale continua all'infinito senza ripetersi. In questo articolo, esploreremo le principali proprietà del numero aureo e analizzeremo i metodi numerici per calcolarlo con un'alta precisione.</div>
+    <ul>
+   <li> <div class="a">Perché lo studio del numero aureo è importante?</div> <div class="b">Lo studio del numero aureo è importante per proprietà matematiche uniche, che lo rendono un oggetto matematico di grande interesse; Applicazioni pratiche in geometria e arte, che ha suscitato ammirazione per la sua estetica considerata particolarmente armoniosa; Modellizzazione della natura, in cui è preso come esempio di come un concetto matematico possa essere utilizzato per spiegare e modellare la realtà; Simmetria e proporzione, che è essenziale in campi come la progettazione di strutture ed edifici, la musica e la pittura.</div></li>
+
+   <li><div class="a">Perché ne è stato fatto uno studio?</div> <div class="b"> Lo studio del numero aureo è stato avviato principalmente per Curiosità e ricerca di armonia che esso sembrava rappresentare; evidenze storiche hanno osservato che il numero aureo appariva frequentemente in natura, arte e architettura quindi il suo studio è un modo per rispondere alla domanda su come e perché la natura e l'arte sembrano seguire certe leggi matematiche; Avanzamenti scientifici, lo studio del numero aureo è stato esteso a molti altri campi scientifici inclusi la biologia e la fisica.</div></li>
+
+    <li><div class="a">In cosa si distingue dagli altri studi?</div> <div class="b">Lo studio del numero aureo si distingue per alcune caratteristiche uniche:
+    Connessione tra matematica e bellezza estetica, molti concetti matematici non godono della stessa notorietà estetica che φ ha acquisito nel corso della storia; Omnipresenza nella natura e nella geometria, La sua presenza nei modelli di crescita delle piante, nelle spirali naturali, nelle distribuzioni delle foglie e persino nelle galassie è un aspetto che rende lo studio del numero aureo unico.</p></div></li>
+</ul>
+<hr>
+
+<h2>Definizione e Proprietà Fondamentali</h2>
+<div class="a">ELEMENTI DI EUCLIDE</div>
+<div class="b"><p>Nel VI libro compare la seguente definizione: Una retta è divisa in media ed estrema ragione quando la lunghezza della linea totale sta a quella della parte maggiore come quella della parte maggiore sta a quella della minore. </p></div>
+<img src="n1.png" style="width: 100%; height: 100%;">
+
+<p>Ma come tutto questo ha a che fare con il numero aureo?</p>
+<img src="n2.png" style="width: 100%; height: 100%;" >
+
+
+
+
+
+<p>Risolvendo questa equazione, otteniamo due radici, ma solo quella positiva è significativa in contesti matematici ed estetici. In termini numerici, la soluzione è:</p>
+<img src="n3.png"  style="width: 100%; height: 100%;">
+<hr>
+
+
+
+<h2>Proprietà Algebriche e Geometriche</h2>
+<p>Nel 1202 ci fu un italiano, Leonardo Pisano, noto come Fibonacci, che si imbattè nel numero aureo:</p>
+<img src="n4.png"  style="width: 100%; height: 100%;">
+
+
+
+
+<p>Alla fine di ogni mese il numero di coppie di conigli che si ottiene è riportato in questa successione, in cui ci sono due fatti curiosi da osservare: </p>
+<img src="n5.png"  style="width: 100%; height: 100%;">
+
+
+
+
+<img src="n6.png"  style="width: 100%; height: 100%;">
+
+
+
+
+
+<div class="b"><p>Una delle più interessanti figure geometriche che si possono costruire utilizzando proporzioni basate su quella aurea è il rettangolo aureo. Possiamo pensarlo come un accostamento di quadrati i cui lati siano proprio i numeri della successione di Fibonacci:</p></div>
+<img src="n7.png"  style="width: 100%; height: 100%;">
+
+
+
+<div class="b"><p>Le carte di credito, la maggior parte dei biglietti di visita, le tessere degli abbonamenti o le carte di identità hanno proporzioni auree; ogni giorno portiamo con noi tutta la bellezza del numero divino.</p></div>
+<hr>
+
+<h2>Applicazioni del Numero Aureo</h2>
+<div class="a">Biologia</div>
+<img src="n8.png"  style="width: 100%; height: 100%;">
+<p>Archi di circonferenza che hanno come raggio il lato del quadrato e come centro un vertice di ciascuno di essi, abbiamo ottenuto la spirale logaritmica:</p>
+<img src="n9.png"  style="width: 100%; height: 100%;">
+</p>Questa curva sinuosa legata anch'essa al numero phi la troviamo in conchiglie o nei bracci delle galassie: </p>
+<img src="n10.png" style="width: 100%; height: 100%;">
+
+<div class="a">Arte e architettura</div>
+<p>Fidia il direttore dei lavori del Partenone di Atene da cui deriva proprio il nome del numero aureo </p>
+<img src="n11.png" style="width: 100%; height: 100%;">
+
+
+<div class="b"><p>Nell'uomo vitruviano di Leonardo da Vinci venne risolto un problema che aveva fatto fallire molti altri artisti ovvero quello di mettere in relazione la figura umana con il quadrato e il cerchio. Leonardo da' al quadrato e alla circonferenza centri differenti, rispettivamente genitali e ombelico. Da questo disegno derivano le proporzioni ideali del corpo umano. </p></div>
+<img src="n12.png" style="width: 100%; height: 100%;">
+<hr>
+
+<h2>Conclusioni</h2>
+<p>Il numero aureo è una costante matematica di grande rilevanza, sia teorica che applicativa. Le sue proprietà affascinano matematici, artisti e scienziati da secoli. L'analisi numerica del numero aureo, in particolare attraverso metodi come la successione di Fibonacci e le formule esplicite, offre un modo per ottenere stime sempre più precise di questo numero in ambito computazionale. Le applicazioni pratiche del numero aureo in geometria, arte e biologia continuano a stimolare nuove ricerche e scoperte, rendendo il numero aureo una delle costanti matematiche più affascinanti e universalmente riconosciute. In sintesi, lo studio del numero aureo non solo ha un valore intrinseco dal punto di vista matematico, ma è anche un concetto che si estende oltre i confini tradizionali della matematica, toccando ambiti estetici, naturali e scientifici. La sua rilevanza universale e la bellezza delle sue proprietà continuano a renderlo un oggetto di studio affascinante.</p>
+
 
 </body>
 </html>
