@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generatore di Frasi Casuali</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #f0f0f0;
+}
+
+.container {
+text-align: center;
+background-color: #fff;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+}
+
+button {
+padding: 10px 20px;
+font-size: 16px;
+margin-top: 20px;
+cursor: pointer;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 5px;
+transition: background-color 0.3s;
+}
+
+button:hover {
+background-color: #0056b3;
+}
+
+p {
+margin-top: 20px;
+font-size: 18px;
+color: #333;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Generatore di Frasi Casuali</h1>
+<button id="generateButton">Genera Frase</button>
+<p id="randomPhrase"></p>
+</div>
+<script>
+const phrases = [
+"La fortuna aiuta gli audaci.",
+"Ogni viaggio inizia con un singolo passo.",
+"L'energia segue il pensiero.",
+"Non è mai troppo tardi per essere ciò che avresti potuto essere.",
+"Il miglior modo per predire il futuro è crearlo.",
+"Chi trova un amico, trova un tesoro.",
+"Meglio un giorno da leone che cento da pecora.",
+"Il tempo è denaro.",
+"Non tutto il male vien per nuocere.",
+"Chi non risica non rosica.",
+"Ogni cosa a suo tempo.",
+"La pazienza è la virtù dei forti.",
+"A caval donato non si guarda in bocca.",
+"L'unione fa la forza.",
+"Chi ben comincia è a metà dell'opera.",
+"Chi semina vento raccoglie tempesta.",
+"L'apparenza inganna.",
+"Non è oro tutto quel che luccica.",
+"Non mettere il carro davanti ai buoi.",
+"Meglio tardi che mai."
+];
+
+document.getElementById('generateButton').addEventListener('click', () => {
+const randomIndex = Math.floor(Math.random() * phrases.length);
+document.getElementById('randomPhrase').innerText = phrases[randomIndex];
+});
+</script>
+</body>
+</html>
