@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -22,21 +23,17 @@
         function processStrings() {
             const stringA = document.getElementById("stringA").value;
             const stringB = document.getElementById("stringB").value;
-            
-            // 1. Calcola la lunghezza delle stringhe
+
             const lengthA = stringA.length;
             const lengthB = stringB.length;
 
-            // 2. Funzione che restituisce la stringa al contrario
             const reverseString = (str) => str.split("").reverse().join("");
             const reversedA = reverseString(stringA);
             const reversedB = reverseString(stringB);
 
-            // 3. Funzione che unisce le due stringhe
             const concatenateStrings = (str1, str2) => str1 + str2;
             const concatenated = concatenateStrings(stringA, stringB);
 
-            // 4. Funzione che calcola la somma delle lunghezze e verifica la lunghezza di B
             const checkLengths = (len1, len2) => {
                 const sum = len1 + len2;
                 let message = `Somma delle lunghezze: ${sum}`;
@@ -47,7 +44,6 @@
             };
             const lengthMessage = checkLengths(lengthA, lengthB);
 
-            // Output dei risultati
             const outputDiv = document.getElementById("output");
             outputDiv.innerHTML = `
                 <p>Lunghezza di A: ${lengthA}</p>
