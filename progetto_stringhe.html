@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Stringhe</title>
+</head>
+<body>
+    <h1>Gestione delle Stringhe</h1>
+    <form id="stringForm">
+        <label for="stringA">Stringa A:</label>
+        <input type="text" id="stringA" name="stringA">
+        <br><br>
+        <label for="stringB">Stringa B:</label>
+        <input type="text" id="stringB" name="stringB">
+        <br><br>
+        <button type="button" onclick="processStrings()">Elabora</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        function processStrings() {
+            const stringA = document.getElementById("stringA").value;
+            const stringB = document.getElementById("stringB").value;
+            
+            // 1. Calcola la lunghezza delle stringhe
+            const lengthA = stringA.length;
+            const lengthB = stringB.length;
+
+            // 2. Funzione che restituisce la stringa al contrario
+            const reverseString = (str) => str.split("").reverse().join("");
+            const reversedA = reverseString(stringA);
+            const reversedB = reverseString(stringB);
+
+            // 3. Funzione che unisce le due stringhe
+            const concatenateStrings = (str1, str2) => str1 + str2;
+            const concatenated = concatenateStrings(stringA, stringB);
+
+            // 4. Funzione che calcola la somma delle lunghezze e verifica la lunghezza di B
+            const checkLengths = (len1, len2) => {
+                const sum = len1 + len2;
+                let message = `Somma delle lunghezze: ${sum}`;
+                if (len2 > 20) {
+                    message += ". B troppo lunga!";
+                }
+                return message;
+            };
+            const lengthMessage = checkLengths(lengthA, lengthB);
+
+            // Output dei risultati
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = `
+                <p>Lunghezza di A: ${lengthA}</p>
+                <p>Lunghezza di B: ${lengthB}</p>
+                <p>Stringa A al contrario: ${reversedA}</p>
+                <p>Stringa B al contrario: ${reversedB}</p>
+                <p>Stringhe concatenate: ${concatenated}</p>
+                <p>${lengthMessage}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
