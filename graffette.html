@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestione Fabbrica di Graffette</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+    }
+
+    #output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fabbrica di Graffette</h1>
+  <p><strong>Nome:</strong> <span id="name">SuperClip</span></p>
+  <p><strong>Velocità iniziale:</strong> <span id="rate">5</span> graffette/sec</p>
+
+  <button onclick="start()">Avvia Produzione</button>
+  <button onclick="stop()">Ferma Produzione</button>
+  <button onclick="reset()">Reset Conteggio</button>
+  <button onclick="boost()">Boost Produzione (5 sec)</button>
+  <button onclick="maintenance()">Manutenzione (3 sec)</button>
+  <button onclick="showStatus()">Mostra Stato</button>
+
+  <div id="output"></div>
+
+  <script>
+    class ClipProducer {
+      constructor(name, productionRatePerSecond) {
+        this.name = name;
+        this.productionRate = productionRatePerSecond;
+        this.totalClips = 0;
+        this.running = false;
+        this._intervalId = null;
+      }
+
+      startProduction() {
+        if (this.running) return;
+        this.running = true;
+        this._intervalId = setInterval(() => {
+          this.totalClips += this.productionRate;
+          log(`[${this.name}] Graffette totali: ${this.totalClips}`);
+        }, 1000);
+      }
+
+      stopProduction() {
+        if (!this.running) return;
+        clearInterval(this._intervalId);
+        this._intervalId = null;
+        this.running = false;
+        log(`[${this.name}] Produzione fermata.`);
+      }
+
+      resetProduction() {
+        this.totalClips = 0;
+        log(`[${this.name}] Conteggio graffette azzerato.`);
+      }
+
+      status() {
+        return {
+          name: this.name,
+          running: this.running,
+          productionRate: this.productionRate,
+          totalClips: this.totalClips
+        };
+      }
+
+      boostProduction(durationInSeconds) {
+        if (!this.running) {
+          log(`[${this.name}] Non puoi potenziare la produzione se è ferma.`);
+          return;
+        }
+
+        const originalRate = this.productionRate;
+        this.productionRate *= 2;
+        log(`[${this.name}] 🚀 BOOST! Velocità raddoppiata a ${this.productionRate} graffette/sec per ${durationInSeconds} secondi.`);
+
+        setTimeout(() => {
+          this.productionRate = originalRate;
+          log(`[${this.name}] Boost terminato. Velocità tornata a ${this.productionRate} graffette/sec.`);
+        }, durationInSeconds * 1000);
+      }
+
+      maintenanceBreak(durationInSeconds) {
+        if (!this.running) {
+          log(`[${this.name}] Produzione già ferma. Nessuna manutenzione necessaria.`);
+          return;
+        }
+
+        log(`[${this.name}] ⚙️ Inizio manutenzione per ${durationInSeconds} secondi...`);
+        this.stopProduction();
+
+        setTimeout(() => {
+          this.startProduction();
+          log(`[${this.name}] ✅ Manutenzione completata. Produzione ripresa.`);
+        }, durationInSeconds * 1000);
+      }
+    }
+
+    const factory = new ClipProducer("SuperClip", 5);
+
+    function log(message) {
+      const output = document.getElementById("output");
+      output.textContent += message + "\n";
+    }
+
+    function start() {
+      factory.startProduction();
+    }
+
+    function stop() {
+      factory.stopProduction();
+    }
+
+    function reset() {
+      factory.resetProduction();
+    }
+
+    function boost() {
+      factory.boostProduction(5);
+    }
+
+    function maintenance() {
+      factory.maintenanceBreak(3);
+    }
+
+    function showStatus() {
+      const status = factory.status();
+      log(`📊 STATO:
+- Nome: ${status.name}
+- In esecuzione: ${status.running}
+- Velocità: ${status.productionRate} graffette/sec
+- Totale: ${status.totalClips} graffette`);
+    }
+  </script>
+</body>
+</html>
