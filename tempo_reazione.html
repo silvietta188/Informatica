@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioco di Reazione</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            width: 300px;
+        }
+        .number {
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .target {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trova il numero diverso!</h1>
+    <div class="grid" id="grid"></div>
+    <p>Tempo di reazione: <span id="reaction-time">-</span> ms</p>
+    <script>
+        let reactionTimes = [];
+        let startTime;
+
+        function generateGrid() {
+            const grid = document.getElementById("grid");
+            grid.innerHTML = "";
+            const numbers = Array.from({length: 100}, (_, i) => i + 1);
+            const targetIndex = Math.floor(Math.random() * 100);
+            startTime = performance.now();
+
+            numbers.forEach((num, index) => {
+                const div = document.createElement("div");
+                div.textContent = num;
+                div.className = "number";
+                if (index === targetIndex) {
+                    div.classList.add("target");
+                }
+                div.onclick = () => {
+                    if (index === targetIndex) {
+                        let reactionTime = performance.now() - startTime;
+                        reactionTimes.push(reactionTime);
+                        document.getElementById("reaction-time").textContent = reactionTime.toFixed(2);
+                        setTimeout(generateGrid, 1000);
+                    }
+                };
+                grid.appendChild(div);
+            });
+        }
+
+        generateGrid();
+    </script>
+</body>
+</html>
