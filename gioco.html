@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Trova il Numero Diverso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .number {
+      font-weight: bold;
+      padding: 10px;
+      background-color: #eee;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .normal {
+      font-weight: normal !important;
+    }
+  </style>
+</head>
+<body>
+  <h1>Trova il Numero Diverso</h1>
+  <p>Trova il numero <strong>non in grassetto</strong> il più velocemente possibile!</p>
+  <div id="grid"></div>
+  <p id="result"></p>
+  <p>Tempi di reazione (ms): <span id="reactionTimes"></span></p>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const result = document.getElementById('result');
+    const reactionDisplay = document.getElementById('reactionTimes');
+    const reactionTimes = [];
+
+    let startTime = 0;
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function createGrid() {
+      grid.innerHTML = '';
+      let numbers = Array.from({ length: 100 }, (_, i) => i + 1);
+      numbers = shuffle(numbers);
+      const targetIndex = Math.floor(Math.random() * 100);
+      startTime = Date.now();
+
+      numbers.forEach((num, index) => {
+        const div = document.createElement('div');
+        div.classList.add('number');
+        if (index === targetIndex) {
+          div.classList.add('normal');
+          div.dataset.correct = 'true';
+        }
+        div.textContent = num;
+        div.addEventListener('click', handleClick);
+        grid.appendChild(div);
+      });
+    }
+
+    function handleClick(e) {
+      const isCorrect = e.target.dataset.correct === 'true';
+      if (isCorrect) {
+        const timeTaken = Date.now() - startTime;
+        reactionTimes.push(timeTaken);
+        result.textContent = `Bravo! Tempo: ${timeTaken} ms`;
+        reactionDisplay.textContent = reactionTimes.join(', ');
+        setTimeout(createGrid, 1000);
+      } else {
+        result.textContent = 'Sbagliato! Riprova...';
+      }
+    }
+
+    createGrid();
+  </script>
+</body>
+</html>
