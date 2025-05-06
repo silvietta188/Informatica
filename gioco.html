@@ -74,13 +74,15 @@
         reactionTimes.push(timeTaken);
         result.textContent = `Bravo! Tempo: ${timeTaken} ms`;
         reactionDisplay.textContent = reactionTimes.join(', ');
-        setTimeout(createGrid, 1000);
       } else {
         result.textContent = 'Sbagliato! Riprova...';
       }
     }
 
+    setInterval(createGrid, 5000);
+
     createGrid();
   </script>
 </body>
 </html>
+
