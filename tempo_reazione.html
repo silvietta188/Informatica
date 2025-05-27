@@ -9,7 +9,7 @@
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             gap: 5px;
-            width: 300px;
+            width: 400px;
         }
         .number {
             font-weight: bold;
@@ -18,19 +18,48 @@
             cursor: pointer;
         }
         .target {
-            font-weight: normal;
+            font-weight: bold;
+            color: magenta; 
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Trova il numero diverso!</h1>
+    <h1>Trova il numero colorato!</h1>
     <div class="grid" id="grid"></div>
-    <p>Tempo di reazione: <span id="reaction-time">-</span> ms</p>
+    <p>Tempo di reazione: <span id="reaction-time">-</span> secondi</p>
+    <table id="risultati">
+        <thead>
+            <tr>
+                <th>N° tentativo</th>
+                <th>Tempo di Reazione (secondi)</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Media Finale</th>
+                <th id="average-time">-</th>
+            </tr>
+        </tfoot>
+    </table>
     <script>
         let reactionTimes = [];
         let startTime;
+        let attempt = 0;
+        const maxAttempts = 5;
 
         function generateGrid() {
+            if (attempt >= maxAttempts) return;
+            
             const grid = document.getElementById("grid");
             grid.innerHTML = "";
             const numbers = Array.from({length: 100}, (_, i) => i + 1);
@@ -46,14 +75,34 @@
                 }
                 div.onclick = () => {
                     if (index === targetIndex) {
-                        let reactionTime = performance.now() - startTime;
+                        let reactionTime = (performance.now() - startTime)/1000;
                         reactionTimes.push(reactionTime);
+                        attempt++;
+
                         document.getElementById("reaction-time").textContent = reactionTime.toFixed(2);
-                        setTimeout(generateGrid, 1000);
+                        updateTable(reactionTime);
+
+                        if (attempt < maxAttempts) {
+                            setTimeout(generateGrid, 1000);
+                        } else {
+                            calculateAverage();
+                        }
                     }
                 };
                 grid.appendChild(div);
             });
+        }
+
+        function updateTable(reactionTime) {
+            const tableBody = document.querySelector("#reaction-table tbody");
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${attempt}</td><td>${reactionTime.toFixed(2)}</td>`;
+            tableBody.appendChild(row);
+        }
+
+        function calculateAverage() {
+            const average = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
+            document.getElementById("average-time").textContent = average.toFixed(2);
         }
 
         generateGrid();
