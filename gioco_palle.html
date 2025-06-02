@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioco di Reazione</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 5px;
+            width: 100%;
+            max-width: 100vw;
+        }
+        .number {
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            font-size: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .target {
+            color: magenta;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clicca le immagini giuste!</h1>
+    <div class="grid" id="grid"></div>
+    <table id="reaction-table">
+        <thead>
+            <tr>
+                <th>N° tentativi</th>
+                <th>Tempo di Reazione (secondi)</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+            <tr>
+                <th>Media Finale</th>
+                <th id="average-time">-</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+    const emoji = [
+        { src: "tennis.jpg", alt: "Tennis" },
+        { src: "pingpong.jpg", alt: "Ping Pong" },
+        { src: "volano.jpg", alt: "Volano" }
+    ];
+
+    let nome = prompt("Inserisci il nome del giocatore");
+    let targetEmoji = ""; // da determinare a caso
+    let totalTargets = 0;
+    let foundTargets = 0;
+    let startTime;
+    let gameStarted = false;
+    let tentativi = 0;
+    const reactionTimes = [];
+
+    function startEmojiGame() {
+        const grid = document.getElementById("grid");
+        grid.innerHTML = "";
+
+        // scegli emoji bersaglio
+        targetEmoji = emoji[Math.floor(Math.random() * emoji.length)];
+        alert(`Clicca su tutte le immagini ${targetEmoji.alt}`);
+
+        const numbers = Array.from({length: 132}, (_, i) => i + 1);
+
+        numbers.forEach((num) => {
+            const div = document.createElement("div");
+            div.className = "number";
+
+            // assegna emoji ciclica
+            const assignedEmoji = emoji[Math.floor(Math.random() * emoji.length)];
+            div.innerHTML = `<img src="${assignedEmoji.src}" alt="${assignedEmoji.alt}" width="40" height="40">`;
+
+
+            // se è del tipo target, abilita click
+            if (assignedEmoji.alt === targetEmoji.alt) {
+                totalTargets++;
+
+                //mette il bordo rosa per sottolineare l'immagine da cliccare
+                div.style.border = "2px solid magenta";
+
+                div.addEventListener("click", () => {
+                    if (!gameStarted) {
+                        startTime = performance.now();
+                        gameStarted = true;
+                    }
+
+                    if (!div.classList.contains("clicked")) {
+                        div.classList.add("clicked");
+                        div.style.opacity = "0.4";
+                        foundTargets++;
+
+                        if (foundTargets === totalTargets) {
+                            let elapsedTime = (performance.now() - startTime) / 1000;
+                            alert(`Complimenti ${nome}! Hai trovato tutte le immagini ${assignedEmoji.alt} in ${elapsedTime.toFixed(2)} secondi!`);
+
+                            reactionTimes.push(elapsedTime);
+
+                            updateTable(tentativi, elapsedTime);
+                            updateAverage();
+                            if(tentativi<2){
+                                startEmojiGame();
+                                gameStarted = false;
+                                tentativi++;
+                            }
+                        }
+                    }
+                });
+            }
+
+            grid.appendChild(div);
+        });
+
+    }
+
+        function updateTable(attemptNumber, time) {
+        const tableBody = document.querySelector("#reaction-table tbody");
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${attemptNumber}</td><td>${time.toFixed(2)}</td>`;
+        tableBody.appendChild(row);
+    }
+
+    function updateAverage() {
+        const average = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
+        document.getElementById("average-time").textContent = average.toFixed(2);
+    }
+
+    startEmojiGame();
+</script>
+
+</body>
+</html>
